@@ -4,6 +4,7 @@
 
 import sys
 import io
+import screeninfo
 import pygame
 import json
 import xkcd
@@ -22,7 +23,10 @@ class xkcd_interface:
         self.background_color = (255, 255, 255)
         pygame.init()
         pygame.mixer.quit()
-        self.screenSize = (pygame.display.Info().current_w, pygame.display.Info().current_h)
+        # Before using screeninfo I used this, but I cannot get info for indivudual monitor yet.
+        #self.screenSize = (pygame.display.Info().current_w, pygame.display.Info().current_h)
+        monitor = screeninfo.get_monitors()[0]
+        self.screenSize = (monitor.width, monitor.height)
         self.screen = pygame.display.set_mode(self.screenSize, pygame.FULLSCREEN)
         self.history = []
 
