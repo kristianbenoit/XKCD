@@ -79,16 +79,18 @@ if __name__ == "__main__":
         event = pygame.event.wait()
         # Enhancement Ideas:
         # 1 - navigate the history with 'p' and 'n'
-        # 2 - support dead keys including 'gg', '35j', '5k', '5p', '5n'.
+        # 2 - support dead keys including 'gg', '5p', '5n'.
         # 3 - Capital letters i.e. 'G'.
         # 4 - Support accessing a random comic with '.'.
         # 5 - go forward and back a year with 'Ctrl-f' and 'Ctrl-b'.
         # 6 - Go to first slide with 'gg'.
-        if event.type == pygame.KEYDOWN and event.key in [pygame.K_j, pygame.K_DOWN, pygame.K_LEFT]:
+        # 7 - Remove scaling of current slide with 's'
+        # 8 - and panning with h j k l.
+        if event.type == pygame.KEYDOWN and event.key in [pygame.K_p, pygame.K_DOWN, pygame.K_LEFT]:
             # Previous
             xkcd.showImage(xkcd.history[-1] - 1)
             continue
-        elif event.type == pygame.KEYDOWN and event.key in [pygame.K_k, pygame.K_UP, pygame.K_RIGHT]:
+        elif event.type == pygame.KEYDOWN and event.key in [pygame.K_n, pygame.K_UP, pygame.K_RIGHT, pygame.K_SPACE]:
             # Next
             xkcd.showImage(xkcd.history[-1] + 1) 
             continue
@@ -113,7 +115,7 @@ if __name__ == "__main__":
             img_nb = img_nb + 156
             xkcd.showImage(img_nb)
             continue
-        elif event.type == pygame.KEYDOWN and event.key in [pygame.K_ESCAPE, pygame.K_SPACE, pygame.K_q]:
+        elif event.type == pygame.KEYDOWN and event.key in [pygame.K_ESCAPE, pygame.K_q]:
             # Quit
             break
 
